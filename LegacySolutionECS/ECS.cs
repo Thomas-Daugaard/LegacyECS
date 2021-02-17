@@ -12,11 +12,9 @@ namespace LegacySolutionECS
         public IHeater _heater { private get; set; }
 
         //Constructor injection
-        public ECS(int thr, IHeater heater, ITempSensor sensor)
+        public ECS(int thr)
         {
             SetThreshold(thr);
-            _tempSensor = sensor;
-            _heater = heater;
         }
 
         public void Regulate()
