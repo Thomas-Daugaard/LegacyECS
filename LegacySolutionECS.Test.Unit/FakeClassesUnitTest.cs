@@ -7,7 +7,7 @@ using NUnit.Framework.Constraints;
 namespace LegacySolutionECS.Test.Unit
 {
     [TestFixture]
-    public class ECSTests
+    public class FakeECSTests
     {
         private ECS uut;
         private int threshold;
@@ -21,50 +21,47 @@ namespace LegacySolutionECS.Test.Unit
             uut = new ECS(threshold);
         }
 
+
+        // Test SelfTest()
         [Test]
         public void RunSelfTest_ReturnsTrue()
         {
-            Assert.That(uut.RunSelfTest(), Is.True);
-        }
-
-        [Test]
-        public void SetThreshold_GetThresholdReturnsCorrectValue()
-        {
             // Arrange
-            uut.SetThreshold(14);
+            uut._heater = new FakeHeater();
+            uut._tempSensor = new FakeTempSensor();
 
             // Act and assert
-            Assert.That(uut.GetThreshold(), Is.EqualTo(14));
         }
 
+        // Test GetCurTemp()
         [Test]
         public void GetCurTemp_TemperatureInCorrectRange()
         {
-            Assert.That(uut.GetCurTemp(), Is.InRange(-5, 45));
+            // Arrange
+            uut._tempSensor = new FakeTempSensor();
+
+            // Act and assert
         }
 
+        // Test Regulate()
         [Test]
         public void Regulate_SetThresholdAboveMaxTempRange_HeaterTurnsOn()
         {
             // Arrange
-            uut.SetThreshold(46);
+            uut._heater = new FakeHeater();
+            uut._tempSensor = new FakeTempSensor();
 
-            // Act
-            uut.Regulate();
-
-            Assert.That(output.ToString(), Is.EqualTo("Heater is on\r\n"));
+            // Act and Assert
         }
 
         [Test]
         public void Regulate_SetThresholdBelowMinTempRange_HeaterTurnsOff()
         {
             // Arrange
-            uut.SetThreshold(-6);
+            uut._heater = new FakeHeater();
+            uut._tempSensor = new FakeTempSensor();
 
-            // Act
-            uut.Regulate();
-
-            Assert.That(output.ToString(), Is.EqualTo("Heater is off\r\n"));
+            // Act and assert
         }
     }
 }

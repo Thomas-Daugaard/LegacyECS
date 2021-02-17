@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LegacySolutionECS
 {
-    internal class TempSensor : ITempSensor
+    public class TempSensor : ITempSensor
     {
         private Random gen = new Random();
 
