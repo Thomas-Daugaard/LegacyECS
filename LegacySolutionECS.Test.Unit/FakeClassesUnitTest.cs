@@ -36,12 +36,13 @@ namespace LegacySolutionECS.Test.Unit
 
         // Test GetCurTemp()
         [Test]
-        public void GetCurTemp_TemperatureInCorrectRange()
+        public void GetCurTemp_TemperatureCorrect()
         {
             // Arrange
             uut._tempSensor = new FakeTempSensor();
 
             // Act and assert
+            Assert.That(uut.GetCurTemp(), Is.EqualTo(20));
         }
 
         // Test Regulate()

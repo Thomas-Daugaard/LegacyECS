@@ -8,7 +8,7 @@ namespace LegacySolutionECS.Test.Unit.Fakes
     {
         public int GetTemp()
         {
-            return 0;
+            return 20;
         }
         public bool RunSelfTest()
         {
