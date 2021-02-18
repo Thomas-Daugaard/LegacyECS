@@ -10,6 +10,7 @@ namespace LegacySolutionECS.Test.Unit.Fakes
         {
             return 20;
         }
+
         public bool RunSelfTest()
         {
             return true;

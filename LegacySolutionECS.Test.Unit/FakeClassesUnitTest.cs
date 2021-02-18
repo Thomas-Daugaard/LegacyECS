@@ -3,6 +3,9 @@ using NUnit.Framework;
 using System;
 using System.IO;
 using LegacySolutionECS.Test.Unit.Fakes;
+using NSubstitute;
+using NSubstitute.Core;
+using NSubstitute.ReceivedExtensions;
 using NUnit.Framework.Constraints;
 
 namespace LegacySolutionECS.Test.Unit
@@ -22,7 +25,6 @@ namespace LegacySolutionECS.Test.Unit
             uut = new ECS(threshold);
         }
 
-
         // Test SelfTest()
         [Test]
         public void RunSelfTest_ReturnsTrue()
@@ -32,6 +34,7 @@ namespace LegacySolutionECS.Test.Unit
             uut._tempSensor = new FakeTempSensor();
 
             // Act and assert
+            uut.RunSelfTest();
         }
 
         // Test GetCurTemp()
@@ -52,8 +55,15 @@ namespace LegacySolutionECS.Test.Unit
             // Arrange
             uut._heater = new FakeHeater();
             uut._tempSensor = new FakeTempSensor();
+            uut.SetThreshold(21);
 
-            // Act and Assert
+            var heater = Substitute.For<IHeater>();
+
+            // Act
+            uut.Regulate();
+
+            // Assert
+            Assert.That(heater.TurnOn().Received(1));
         }
 
         [Test]
