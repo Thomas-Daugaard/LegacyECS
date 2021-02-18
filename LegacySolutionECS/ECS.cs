@@ -49,13 +49,10 @@ namespace LegacySolutionECS
             {
                 _Window.open();  //Window extension    
             }
-
             else
             {
                 _Window.close(); //Window extension   
             }
-
-
         }
 
         public void SetThreshold(int thr)
