@@ -16,6 +16,7 @@ namespace LegacySolutionECS.Test.Unit
         private ECS uut;
         private int threshold;
         private StringWriter output = new StringWriter();
+        private IHeater _Iheater;
 
         [SetUp]
         public void Setup()
@@ -23,6 +24,8 @@ namespace LegacySolutionECS.Test.Unit
             Console.SetOut(output);
             threshold = 20;
             uut = new ECS(threshold);
+            _Iheater = Substitute.For<IHeater>();
+            uut._heater = _Iheater;
         }
 
         // Test SelfTest()
@@ -53,27 +56,30 @@ namespace LegacySolutionECS.Test.Unit
         public void Regulate_SetThresholdAboveMaxTempRange_HeaterTurnsOn()
         {
             // Arrange
-            uut._heater = new FakeHeater();
+            uut._Window = new Window();
             uut._tempSensor = new FakeTempSensor();
             uut.SetThreshold(21);
-
-            var heater = Substitute.For<IHeater>();
 
             // Act
             uut.Regulate();
 
             // Assert
-            Assert.That(heater.TurnOn().Received(1));
+            _Iheater.Received(1).TurnOn();
         }
 
         [Test]
         public void Regulate_SetThresholdBelowMinTempRange_HeaterTurnsOff()
         {
             // Arrange
-            uut._heater = new FakeHeater();
+            uut._Window = new Window();
             uut._tempSensor = new FakeTempSensor();
+            uut.SetThreshold(19);
 
-            // Act and assert
+            // Act
+            uut.Regulate();
+
+            // Assert
+            _Iheater.Received(1).TurnOff();
         }
     }
 }
