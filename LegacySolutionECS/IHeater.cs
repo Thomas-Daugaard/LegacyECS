@@ -8,7 +8,6 @@ namespace LegacySolutionECS
     {
         void TurnOn();
         void TurnOff();
-        //test test
 
         bool RunSelfTest();
     }
