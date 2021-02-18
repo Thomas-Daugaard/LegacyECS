@@ -62,8 +62,6 @@ namespace LegacySolutionECS.Test.Unit
 
             // Act
             uut.Regulate();
-
-            // Assert
             _Iheater.Received(1).TurnOn();
         }
 
