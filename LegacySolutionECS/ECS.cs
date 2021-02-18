@@ -39,20 +39,20 @@ namespace LegacySolutionECS
             if (t < _threshold)
             {
                 _heater.TurnOn();
-                _Window.close(); //Window extension
             }
             else
             {
                 _heater.TurnOff();
-
-                if (t > _WindowThreshold)
-                {
-                    _Window.open();  //Window extension    
-                }
-                
             }
-                
 
+            if (t > _WindowThreshold)
+            {
+                _Window.open();  //Window extension    
+            }
+            else
+            {
+                _Window.close(); //Window extension   
+            }
         }
 
         public void SetThreshold(int thr)
