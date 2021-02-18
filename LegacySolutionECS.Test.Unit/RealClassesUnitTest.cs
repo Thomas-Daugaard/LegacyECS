@@ -62,13 +62,14 @@ namespace LegacySolutionECS.Test.Unit
             // Arrange
             uut._heater = new Heater();
             uut._tempSensor = new TempSensor();
+            uut._Window = new Window();
             uut.SetThreshold(46);
 
             // Act
             uut.Regulate();
 
             // Assert
-            Assert.That(output.ToString(), Is.EqualTo("Heater is on\r\n"));
+            Assert.That(output.ToString(), Is.EqualTo("Heater is on\r\nWindow is closed\n\r\n"));
         }
 
         [Test]
@@ -77,6 +78,7 @@ namespace LegacySolutionECS.Test.Unit
             // Arrange
             uut._heater = new Heater();
             uut._tempSensor = new TempSensor();
+            uut._Window = new Window();
             uut.SetThreshold(-6);
 
             // Flush output
@@ -87,7 +89,7 @@ namespace LegacySolutionECS.Test.Unit
             uut.Regulate();
 
             // Assert
-            Assert.That(output.ToString(), Is.EqualTo("Heater is off\r\n"));
+            Assert.That(output.ToString(), Is.EqualTo("Heater is off\r\nWindow is closed\n\r\n"));
         }
     }
 }
