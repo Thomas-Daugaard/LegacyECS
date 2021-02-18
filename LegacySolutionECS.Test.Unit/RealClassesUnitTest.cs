@@ -100,7 +100,7 @@ namespace LegacySolutionECS.Test.Unit
         //    uut._heater = new Heater();
         //    uut._tempSensor = new TempSensor();
         //    uut._Window = new Window();
-
+            
         //    uut._WindowThreshold = 1;
 
         //    // Act
