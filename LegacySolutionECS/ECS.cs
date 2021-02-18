@@ -8,8 +8,24 @@ namespace LegacySolutionECS
     {
         //Property injection
         private int _threshold;
+
+        private int _windowThreshold = 25; //Window extension
+        public int _WindowThreshold //Window extension
+        {
+            get
+            {
+                return _windowThreshold;
+            }
+            set
+            {
+                _windowThreshold = _WindowThreshold;
+            }
+        }  
+
+
         public ITempSensor _tempSensor { private get; set; }
         public IHeater _heater { private get; set; }
+        public IWindow _Window { private get; set; }  //Window extension
 
         //Constructor injection
         public ECS(int thr)
@@ -21,9 +37,21 @@ namespace LegacySolutionECS
         {
             var t = _tempSensor.GetTemp();
             if (t < _threshold)
+            {
                 _heater.TurnOn();
+                _Window.close(); //Window extension
+            }
             else
+            {
                 _heater.TurnOff();
+
+                if (t > _WindowThreshold)
+                {
+                    _Window.open();  //Window extension    
+                }
+                
+            }
+                
 
         }
 

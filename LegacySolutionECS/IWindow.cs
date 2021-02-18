@@ -6,6 +6,7 @@ namespace LegacySolutionECS
 {
     public interface IWindow
     {
-
+        abstract void open();
+        abstract void close();
     }
 }
