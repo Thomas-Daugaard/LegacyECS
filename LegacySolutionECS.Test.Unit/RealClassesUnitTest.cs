@@ -69,7 +69,7 @@ namespace LegacySolutionECS.Test.Unit
             uut.Regulate();
 
             // Assert
-            Assert.That(output.ToString(), Is.EqualTo("Heater is on\r\nWindow is closed\n\r\n"));
+            Assert.That(output.ToString(), Contains.Substring("Heater is on\r\nWindow is closed\n\r\n"));
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace LegacySolutionECS.Test.Unit
             uut.Regulate();
 
             // Assert
-            Assert.That(output.ToString(), Is.EqualTo("Heater is off\r\nWindow is closed\n\r\n"));
+            Assert.That(output.ToString(), Is.EqualTo("Heater is off\r\nWindow is open\n\r\n"));
         }
 
         [Test]
