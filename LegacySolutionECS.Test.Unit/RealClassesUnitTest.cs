@@ -57,21 +57,21 @@ namespace LegacySolutionECS.Test.Unit
         }
 
         // Test Regulate()
-        [Test]
-        public void Regulate_SetThresholdAboveMaxTempRange_HeaterTurnsOn()
-        {
-            // Arrange
-            uut._heater = new Heater();
-            uut._tempSensor = new TempSensor();
-            uut._Window = new Window();
-            uut.SetThreshold(46);
+        //[Test]
+        //public void Regulate_SetThresholdAboveMaxTempRange_HeaterTurnsOn()
+        //{
+        //    // Arrange
+        //    uut._heater = new Heater();
+        //    uut._tempSensor = new TempSensor();
+        //    uut._Window = new Window();
+        //    uut.SetThreshold(46);
 
-            // Act
-            uut.Regulate();
+        //    // Act
+        //    uut.Regulate();
 
-            // Assert
-            Assert.That(output.ToString(), Contains.Substring("Heater is on\r\nWindow is closed\n\r\n"));
-        }
+        //    // Assert
+        //    Assert.That(output.ToString(), Contains.Substring("Heater is on\r\nWindow is closed\n\r\n"));
+        //}
 
         //[Test]
         //public void Regulate_SetThresholdBelowMinTempRange_HeaterTurnsOff()
