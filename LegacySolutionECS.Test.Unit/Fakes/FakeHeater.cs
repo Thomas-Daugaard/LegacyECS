@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LegacySolutionECS
+namespace LegacySolutionECS.Test.Unit.Fakes
 {
-    public class FakeTempSensor : ITempSensor
+    public class FakeHeater : IHeater
     {
-        public int GetTemp()
+        public void TurnOn()
         {
-            return 0;
+
+        }
+        public void TurnOff()
+        {
+
         }
         public bool RunSelfTest()
         {
