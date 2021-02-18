@@ -91,5 +91,23 @@ namespace LegacySolutionECS.Test.Unit
             // Assert
             Assert.That(output.ToString(), Is.EqualTo("Heater is off\r\nWindow is closed\n\r\n"));
         }
+
+        [Test]
+        public void Regulate_SetLowWindowThreshold_WindowOpned()
+        {
+            // Arrange
+            uut._heater = new Heater();
+            uut._tempSensor = new TempSensor();
+            uut._Window = new Window();
+            uut.SetThreshold(30);
+            uut._WindowThreshold = 10;
+
+            // Act
+            uut.Regulate();
+
+            // Assert
+            Assert.That(output.ToString(), Contains.Substring("Window is open\n\r\n"));
+
+        }
     }
 }
