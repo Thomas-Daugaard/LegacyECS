@@ -2,6 +2,7 @@ using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 using System;
 using System.IO;
+using NSubstitute.ReceivedExtensions;
 using NUnit.Framework.Constraints;
 
 namespace LegacySolutionECS.Test.Unit
@@ -99,14 +100,15 @@ namespace LegacySolutionECS.Test.Unit
             uut._heater = new Heater();
             uut._tempSensor = new TempSensor();
             uut._Window = new Window();
-            uut.SetThreshold(30);
-            uut._WindowThreshold = 10;
+            
+            uut._WindowThreshold = 1;
 
             // Act
             uut.Regulate();
 
             // Assert
             Assert.That(output.ToString(), Contains.Substring("Window is open\n\r\n"));
+            Assert.That(uut._Window.open() is.Received(1));
 
         }
     }
