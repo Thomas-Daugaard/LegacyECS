@@ -2,6 +2,7 @@ using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
 using System;
 using System.IO;
+using LegacySolutionECS.Test.Unit.Fakes;
 using NUnit.Framework.Constraints;
 
 namespace LegacySolutionECS.Test.Unit
