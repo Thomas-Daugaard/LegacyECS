@@ -22,7 +22,6 @@ namespace LegacySolutionECS
             }
         }  
 
-
         public ITempSensor _tempSensor { private get; set; }
         public IHeater _heater { private get; set; }
         public IWindow _Window { private get; set; }  //Window extension
