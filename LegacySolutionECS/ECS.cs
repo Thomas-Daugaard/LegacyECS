@@ -50,7 +50,7 @@ namespace LegacySolutionECS
             }
             else
             {
-                _Window.close(); //Window extension   
+                _Window.close(); //Window extension
             }
         }
 
