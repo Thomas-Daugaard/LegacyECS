@@ -8,6 +8,9 @@ namespace LegacySolutionECS
     {
         //Property injection
         private int _threshold;
+        private IHeater _heater;
+        private IWindow _Window;
+        private ITempSensor _tempSensor;
 
         private int _windowThreshold = 25; //Window extension
         public int _WindowThreshold //Window extension
@@ -22,14 +25,14 @@ namespace LegacySolutionECS
             }
         }  
 
-        public ITempSensor _tempSensor { private get; set; }
-        public IHeater _heater { private get; set; }
-        public IWindow _Window { private get; set; }  //Window extension
 
         //Constructor injection
-        public ECS(int thr)
+        public ECS(int thr, IHeater heater, ITempSensor tempSensor, IWindow window)
         {
             SetThreshold(thr);
+            _heater = heater;
+            _tempSensor = tempSensor;
+            _Window = window;
         }
 
         public void Regulate()

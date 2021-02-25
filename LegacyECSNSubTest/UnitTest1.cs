@@ -20,10 +20,7 @@ namespace LegacyECSNSubTest
             _heater = Substitute.For<IHeater>();
             _sensor = Substitute.For<ITempSensor>();
             _window = Substitute.For<IWindow>();
-            _uut._heater = _heater;
-            _uut._tempSensor = _sensor;
-            _uut._Window = _window;
-            _uut = new ECS(25);
+            _uut = new ECS(25, _heater, _sensor, _window);
         }
 
         [Test]
