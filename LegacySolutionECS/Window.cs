@@ -15,5 +15,10 @@ namespace LegacySolutionECS
         {
             Console.WriteLine("Window is closed\n");
         }
+
+        public bool RunSelfTest()
+        {
+            return true;
+        }
     }
 }

@@ -71,7 +71,7 @@ namespace LegacySolutionECS
 
         public bool RunSelfTest()
         {
-            return _tempSensor.RunSelfTest() && _heater.RunSelfTest();
-        }
+            return _tempSensor.RunSelfTest() && _heater.RunSelfTest() && _Window.RunSelfTest();
+        } // Lavet ændring
     }
 }

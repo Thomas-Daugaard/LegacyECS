@@ -8,5 +8,6 @@ namespace LegacySolutionECS
     {
         abstract void open();
         abstract void close();
+        bool RunSelfTest();
     }
 }
