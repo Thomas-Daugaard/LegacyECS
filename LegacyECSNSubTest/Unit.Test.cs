@@ -24,7 +24,7 @@ namespace LegacyECSNSubTest
         }
 
         [Test]
-        public void RunSelfTest_Succsess_SelftestApproved()
+        public void RunSelfTest_Success_SelftestApproved()
         {
             _heater.RunSelfTest().Returns(true);
             _sensor.RunSelfTest().Returns(true);
